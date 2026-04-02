@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Uretim domaini netlestiginde buraya mutlak sitemap adresi eklenmelidir.
