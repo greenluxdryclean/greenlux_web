@@ -336,6 +336,11 @@ button {
   text-transform: uppercase;
 }
 
+.hero .eyebrow {
+  max-width: 48ch;
+  line-height: 1.45;
+}
+
 .hero h1,
 .section-heading h2,
 .story-copy h2,
@@ -348,7 +353,7 @@ button {
 }
 
 .hero h1 {
-  max-width: 11ch;
+  max-width: 12ch;
   font-size: clamp(3rem, 5.8vw, 5.2rem);
 }
 
@@ -358,6 +363,21 @@ button {
   font-weight: 600;
   color: var(--accent);
   letter-spacing: -0.04em;
+}
+
+.hero .display-accent {
+  display: block;
+  margin: 0.03em 0 0.04em;
+}
+
+.hero-lead {
+  max-width: 54ch;
+  margin: 22px 0 0;
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 1.16rem;
+  font-weight: 600;
+  line-height: 1.65;
 }
 
 .hero-text,
@@ -380,7 +400,7 @@ button {
 
 .hero-text {
   max-width: 58ch;
-  margin: 22px 0 0;
+  margin: 18px 0 0;
   font-size: 1.04rem;
 }
 
@@ -613,8 +633,15 @@ button {
 .services-grid,
 .benefits-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+}
+
+.services-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.benefits-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .service-card,
@@ -816,6 +843,10 @@ button {
 }
 
 .benefits-grid {
+  margin-top: 22px;
+}
+
+.innovation-proof {
   margin-top: 22px;
 }
 

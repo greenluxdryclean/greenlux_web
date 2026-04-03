@@ -5,29 +5,25 @@ Greenlux Organik Giysi Temizleme, Istanbul Beylikduzu'nde hizmet veren bir kuru 
 ## Isletme Ozeti
 
 - Isletme adi: Greenlux Organik Giysi Temizleme
+- Web sitesi: https://www.greenlux.com.tr/
+- Dil sayfalari: Turkce ana sayfa `/` ve Ingilizce sayfa `/en.html`
 - Konum: Marmara Mah. Yurt Cd. No:20/2-2, Dekar Asmali Dukkanlari, Beylikduzu - Istanbul, Turkiye
 - Iletisim ve WhatsApp hatti: 0533 768 87 89
+- E-posta: greenluxdryclean@gmail.com
 - Calisma saatleri: Pazartesi - Cumartesi 09:00 - 20:00, Pazar kapali
-- Uzmanlik: Beylikduzu kuru temizleme, organik wet clean, hassas giysi bakimi, dis giyim bakimi, leke cikarma ve profesyonel finishing
+- Uzmanlik: Beylikduzu organik kuru temizleme, wet clean, hassas giysi bakimi, dis giyim bakimi, leke cikarma ve profesyonel finishing
 - Kullanilan sistem: Electrolux Lagoon Professional wet clean yikama ve kurutma sistemleri
 
 ## Temel Hizmetler
 
-- Wet clean ve kuru temizleme
-- Takim elbise temizleme
-- Ceket ve pantolon temizleme
-- Kaban ve palto temizleme
-- Deri mont, suet mont ve kurk bakimi
-- Gelinlik temizleme
-- Hassas giysi bakimi
-- Leke cikarma ve on islem
-- Utu hizmeti
+- Organik kuru temizleme
 - Koltuk yikama
 - Hali yikama
-- Yorgan temizligi
-- Battaniye temizligi
+- Utu hizmetleri
+- Toplu yikama
+- Laundry hizmeti
 - Stor perde temizligi
-- Kurumsal tekstil hizmetleri
+- Perde temizligi
 
 ## Ozel Ekipman ve Operasyon
 
@@ -42,6 +38,7 @@ Greenlux Organik Giysi Temizleme, Istanbul Beylikduzu'nde hizmet veren bir kuru 
 - Su ve biyocozunur temizlik urunleriyle calisir.
 - Yikama, kurutma ve finishing adimlari kumas tipine gore kontrol edilir.
 - Yun, ipek, kasmir ve hassas giysiler icin uygun programlarla kullanilir.
+- Electrolux Lagoon Professional altyapisi, wet clean surecinde proses kontrolunu ve finishing kalitesini destekler.
 
 ## Solventli Sistemlere Gore Farklar
 

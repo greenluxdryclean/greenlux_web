@@ -5,29 +5,25 @@ Greenlux Organic Dry Cleaning is a dry cleaning and organic wet clean business l
 ## Business Summary
 
 - Business name: Greenlux Organic Dry Cleaning
+- Website: https://www.greenlux.com.tr/
+- Language pages: Turkish home page `/` and English page `/en.html`
 - Location: Marmara Mah. Yurt Cd. No:20/2-2, Dekar Asmali Dukkanlari, Beylikduzu - Istanbul, Türkiye
 - Phone and WhatsApp line: +90 533 768 87 89
+- Email: greenluxdryclean@gmail.com
 - Working hours: Monday - Saturday 09:00 - 20:00, Sunday closed
-- Specialty: dry cleaning in Beylikduzu, organic wet clean, delicate garment care, outerwear care, stain removal and professional finishing
+- Specialty: organic dry cleaning in Beylikduzu, wet clean, delicate garment care, outerwear care, stain removal and professional finishing
 - Equipment: Electrolux Lagoon Professional wet clean washing and drying systems
 
 ## Core Services
 
-- Wet clean and dry cleaning
-- Suit cleaning
-- Jacket and trouser cleaning
-- Coat and overcoat cleaning
-- Leather jacket, suede jacket and fur care
-- Wedding dress cleaning
-- Delicate garment care
-- Stain removal and pre-treatment
-- Ironing service
+- Organic dry cleaning
 - Sofa cleaning
 - Carpet cleaning
-- Duvet cleaning
-- Blanket cleaning
+- Ironing services
+- Bulk washing
+- Laundry service
 - Roller blind cleaning
-- Corporate textile services
+- Curtain cleaning
 
 ## Specialized Equipment and Process
 
@@ -42,6 +38,7 @@ Greenlux Organic Dry Cleaning is a dry cleaning and organic wet clean business l
 - It works with water and biodegradable cleaning products.
 - Washing, drying and finishing steps are adjusted according to fabric type.
 - It is suitable for wool, silk, cashmere and other delicate garments when the right program is used.
+- Electrolux Lagoon Professional supports process control and finishing quality throughout the wet clean workflow.
 
 ## Difference From Solvent Systems
 
