@@ -50,12 +50,7 @@
     <link rel="alternate" hreflang="tr" href="index.html" />
     <link rel="alternate" hreflang="en" href="en.html" />
     <link rel="alternate" hreflang="x-default" href="index.html" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" as="image" href="images/wet-cleaning.webp" />
     <link rel="stylesheet" href="styles.css" />
     <script type="application/ld+json">
       {
@@ -126,7 +121,7 @@
               }
             ],
             "logo": "images/greenlux-logo-cropped.png",
-            "image": ["images/wet-cleaning.webp", "images/hanging-shirts.png"],
+            "image": ["images/wet-cleaning.webp", "images/hanging-shirts.jpg"],
             "knowsAbout": [
               "Wet clean",
               "Organic garment cleaning",
@@ -413,10 +408,11 @@
 
             <article class="floating-card garment-card">
               <img
-                src="images/hanging-shirts.png"
+                src="images/hanging-shirts.jpg"
                 alt="Neatly arranged shirts on hangers"
                 width="906"
                 height="612"
+                decoding="async"
               />
               <div>
                 <strong>Expert care for delicate textiles</strong>
@@ -429,6 +425,10 @@
                 class="mini-badge"
                 src="images/organic-badge.png"
                 alt="100 percent organic approach badge"
+                width="140"
+                height="100"
+                loading="lazy"
+                decoding="async"
               />
               <p class="card-label">Store Location</p>
               <strong>Marmara Mah. Yurt Cd. No:20/2-2</strong>
@@ -514,8 +514,10 @@
             <div class="metric-value metric-logo-wrap">
               <img
                 class="metric-logo metric-logo-woolmark"
-                src="https://www.woolmark.com/globalassets/_06-new-woolmark/_industry/certification/how-to-get-certified---wool-care/images/woolmark-wool-care-1.jpg"
+                src="images/woolmark-logo.jpg"
                 alt="Official Woolmark logo"
+                width="591"
+                height="378"
                 loading="lazy"
                 decoding="async"
               />
@@ -649,7 +651,10 @@
               <img
                 src="images/wet-cleaning.webp"
                 alt="Delicate textile cleaning in an Electrolux Lagoon Professional machine"
+                width="1024"
+                height="996"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption>
                 <strong>Controlled wet clean with Electrolux Lagoon</strong>
@@ -661,7 +666,10 @@
               <img
                 src="images/ironing-suit.jpeg"
                 alt="Steam finishing on a jacket"
+                width="360"
+                height="140"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption>
                 <strong>Jacket and suit finishing</strong>
@@ -671,9 +679,12 @@
 
             <figure class="media-card reveal">
               <img
-                src="images/hanging-shirts.png"
+                src="images/hanging-shirts.jpg"
                 alt="Shirts prepared on hangers for delivery"
+                width="906"
+                height="612"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption>
                 <strong>Hanger-ready delivery preparation</strong>
@@ -683,9 +694,12 @@
 
             <figure class="media-card reveal">
               <img
-                src="images/laundry-folding.png"
+                src="images/laundry-folding.jpg"
                 alt="Staff sorting and organizing clean textiles"
+                width="920"
+                height="608"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption>
                 <strong>Sorting and packaging discipline</strong>
@@ -697,7 +711,10 @@
               <img
                 src="images/ironing-shirt.jpg"
                 alt="Detail-focused ironing on a shirt"
+                width="400"
+                height="400"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption>
                 <strong>Shirt ironing standard</strong>
@@ -711,16 +728,22 @@
           <div class="story-visual reveal">
             <div class="story-image story-image-large">
               <img
-                src="images/laundry-folding.png"
+                src="images/laundry-folding.jpg"
                 alt="Staff organizing clean textiles"
+                width="920"
+                height="608"
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div class="story-image story-image-small">
               <img
-                src="images/hanging-shirts.png"
+                src="images/hanging-shirts.jpg"
                 alt="Neatly arranged shirts on hangers"
+                width="906"
+                height="612"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -929,9 +952,12 @@
 
             <div class="process-visual reveal">
               <img
-                src="images/steam-ironing.png"
+                src="images/steam-ironing.jpg"
                 alt="Professional ironing and finishing process"
+                width="726"
+                height="488"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </div>

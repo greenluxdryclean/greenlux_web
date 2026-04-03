@@ -50,12 +50,7 @@
     <link rel="alternate" hreflang="tr" href="index.html" />
     <link rel="alternate" hreflang="en" href="en.html" />
     <link rel="alternate" hreflang="x-default" href="index.html" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" as="image" href="images/wet-cleaning.webp" />
     <link rel="stylesheet" href="styles.css" />
     <script type="application/ld+json">
       {
@@ -134,7 +129,7 @@
               }
             ],
             "logo": "images/greenlux-logo-cropped.png",
-            "image": ["images/wet-cleaning.webp", "images/hanging-shirts.png"],
+            "image": ["images/wet-cleaning.webp", "images/hanging-shirts.jpg"],
             "knowsAbout": [
               "Wet clean",
               "Beylikdüzü kuru temizleme",
@@ -471,10 +466,11 @@
 
             <article class="floating-card garment-card">
               <img
-                src="images/hanging-shirts.png"
+                src="images/hanging-shirts.jpg"
                 alt="Askıda düzenli gömlekler"
                 width="906"
                 height="612"
+                decoding="async"
               />
               <div>
                 <strong>Hassas tekstiller için uzman bakım</strong>
@@ -487,6 +483,10 @@
                 class="mini-badge"
                 src="images/organic-badge.png"
                 alt="%100 organik yaklaşım rozeti"
+                width="140"
+                height="100"
+                loading="lazy"
+                decoding="async"
               />
               <p class="card-label">Mağaza Lokasyonu</p>
               <strong>Marmara Mah. Yurt Cd. No:20/2-2</strong>
@@ -572,8 +572,10 @@
             <div class="metric-value metric-logo-wrap">
               <img
                 class="metric-logo metric-logo-woolmark"
-                src="https://www.woolmark.com/globalassets/_06-new-woolmark/_industry/certification/how-to-get-certified---wool-care/images/woolmark-wool-care-1.jpg"
+                src="images/woolmark-logo.jpg"
                 alt="Woolmark resmi logosu"
+                width="591"
+                height="378"
                 loading="lazy"
                 decoding="async"
               />
@@ -721,7 +723,10 @@
               <img
                 src="images/wet-cleaning.webp"
                 alt="Electrolux Lagoon Professional makinesinde hassas tekstil temizliği"
+                width="1024"
+                height="996"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption>
                 <strong>Electrolux Lagoon ile kontrollü wet clean</strong>
@@ -733,7 +738,10 @@
               <img
                 src="images/ironing-suit.jpeg"
                 alt="Ceket üzerinde buharlı finishing uygulaması"
+                width="360"
+                height="140"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption>
                 <strong>Ceket ve takım elbise finishingi</strong>
@@ -743,9 +751,12 @@
 
             <figure class="media-card reveal">
               <img
-                src="images/hanging-shirts.png"
+                src="images/hanging-shirts.jpg"
                 alt="Askıya alınmış ve teslime hazırlanmış gömlekler"
+                width="906"
+                height="612"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption>
                 <strong>Askılı teslim hazırlığı</strong>
@@ -755,9 +766,12 @@
 
             <figure class="media-card reveal">
               <img
-                src="images/laundry-folding.png"
+                src="images/laundry-folding.jpg"
                 alt="Temiz tekstilleri ayrıştıran ve düzenleyen personel"
+                width="920"
+                height="608"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption>
                 <strong>Ayrıştırma ve paketleme disiplini</strong>
@@ -769,7 +783,10 @@
               <img
                 src="images/ironing-shirt.jpg"
                 alt="Gömlek üzerinde detay odaklı ütüleme işlemi"
+                width="400"
+                height="400"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption>
                 <strong>Gömlek ütüleme standardı</strong>
@@ -783,16 +800,22 @@
           <div class="story-visual reveal">
             <div class="story-image story-image-large">
               <img
-                src="images/laundry-folding.png"
+                src="images/laundry-folding.jpg"
                 alt="Temiz tekstilleri düzenleyen personel"
+                width="920"
+                height="608"
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div class="story-image story-image-small">
               <img
-                src="images/hanging-shirts.png"
+                src="images/hanging-shirts.jpg"
                 alt="Askıda düzenli gömlekler"
+                width="906"
+                height="612"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -1019,9 +1042,12 @@
 
             <div class="process-visual reveal">
               <img
-                src="images/steam-ironing.png"
+                src="images/steam-ironing.jpg"
                 alt="Profesyonel ütü ve finishing uygulaması"
+                width="726"
+                height="488"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </div>

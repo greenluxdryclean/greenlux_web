@@ -1,6 +1,6 @@
 :root {
-  --font-body: "Source Sans 3", system-ui, sans-serif;
-  --font-ui: "Montserrat", system-ui, sans-serif;
+  --font-body: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-ui: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --bg: #ebfbff;
   --bg-soft: #f7feff;
   --card: rgba(248, 255, 255, 0.92);
@@ -77,6 +77,21 @@ button {
   width: var(--container);
   margin: 0 auto;
   padding: 56px 0;
+}
+
+@supports (content-visibility: auto) {
+  .metrics,
+  .services,
+  .story,
+  .innovation,
+  .lagoon,
+  .process,
+  .faq,
+  .contact,
+  .site-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 960px;
+  }
 }
 
 .site-header {
