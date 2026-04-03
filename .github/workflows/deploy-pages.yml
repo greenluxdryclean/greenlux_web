@@ -33,6 +33,7 @@ jobs:
         run: |
           mkdir -p dist
           cp -R images dist/images
+          cp -R hizmetler dist/hizmetler
           cp index.html en.html styles.css script.js robots.txt sitemap.xml CNAME llms.txt llms-en.txt dist/
           touch dist/.nojekyll
 
