@@ -1865,6 +1865,10 @@ button {
   }
 
   .site-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 8px;
     flex-wrap: nowrap;
     overflow: visible;
     border-radius: 26px;
@@ -1900,7 +1904,13 @@ button {
     display: inline-flex;
     min-height: 44px;
     padding: 0 12px;
-    margin-left: 8px;
+    margin-left: 0;
+  }
+
+  .language-link {
+    justify-self: end;
+    gap: 8px;
+    flex-shrink: 0;
   }
 
   .site-nav {
@@ -1963,6 +1973,8 @@ button {
 
   .brand {
     --brand-width: 190px;
+    min-width: 0;
+    max-width: none;
   }
 
   .hero-frame {
@@ -2036,11 +2048,11 @@ button {
 
 @media (max-width: 640px) {
   .brand {
-    --brand-width: min(58vw, 210px);
+    --brand-width: min(45vw, 164px);
     --brand-subtitle-left: 26.5%;
     --brand-subtitle-width: 73%;
     --brand-subtitle-top: 74%;
-    max-width: calc(100% - 136px);
+    max-width: none;
   }
 
   .menu-toggle {
@@ -2053,7 +2065,24 @@ button {
 
   .header-link {
     min-height: 40px;
-    padding: 0 10px;
+    padding: 0;
+  }
+
+  .language-link {
+    width: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    justify-content: center;
+  }
+
+  .language-link .lang-code {
+    display: none;
+  }
+
+  .language-link .lang-flag {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
   }
 
   .hero h1 {
@@ -2079,20 +2108,39 @@ button {
   }
 
   .hero-visual {
-    min-height: 470px;
+    min-height: auto;
+    display: grid;
+    gap: 16px;
+  }
+
+  .hero-frame {
+    position: relative;
+    inset: auto;
+    min-height: 300px;
+  }
+
+  .floating-card {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    max-width: none;
   }
 
   .garment-card,
   .address-card {
-    width: calc(100% - 32px);
+    width: 100%;
   }
 
   .garment-card {
-    right: 16px;
+    right: auto;
+    top: auto;
+    border-radius: 24px;
   }
 
   .address-card {
-    left: 16px;
+    left: auto;
+    bottom: auto;
+    padding: 20px;
   }
 
   .story-visual {
