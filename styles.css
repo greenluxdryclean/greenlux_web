@@ -1617,11 +1617,17 @@ button {
 }
 
 @media (max-width: 860px) {
+  body::before {
+    display: none;
+  }
+
   .site-header {
     flex-wrap: nowrap;
     overflow: visible;
     border-radius: 26px;
     padding: 14px;
+    background: rgba(248, 255, 255, 0.96);
+    backdrop-filter: none;
   }
 
   .menu-toggle {
@@ -1668,7 +1674,7 @@ button {
     border-radius: 24px;
     background: rgba(248, 255, 255, 0.94);
     box-shadow: 0 22px 44px rgba(15, 111, 146, 0.14);
-    backdrop-filter: blur(20px);
+    backdrop-filter: none;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -1777,6 +1783,11 @@ button {
     bottom: 16px;
     min-height: 58px;
     padding: 8px 14px 8px 8px;
+  }
+
+  .floating-card {
+    backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.96);
   }
 }
 
