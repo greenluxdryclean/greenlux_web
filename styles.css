@@ -995,14 +995,18 @@ button {
 
 .innovation-layout {
   display: grid;
-  grid-template-columns: minmax(300px, 0.72fr) minmax(0, 0.88fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(320px, 0.92fr) minmax(0, 1.38fr);
+  grid-template-areas:
+    "visual comparison"
+    "definition comparison";
   gap: 22px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .innovation-visual {
+  grid-area: visual;
   position: relative;
-  min-height: 100%;
+  min-height: 430px;
   border-radius: var(--radius-xl);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(241, 250, 252, 0.84)),
@@ -1014,7 +1018,7 @@ button {
 
 .innovation-visual-main {
   position: absolute;
-  inset: 0 0 84px 0;
+  inset: 0 0 92px 0;
 }
 
 .innovation-visual-main img,
@@ -1027,13 +1031,14 @@ button {
 
 .innovation-visual-main img {
   opacity: 0.92;
+  object-position: 42% center;
 }
 
 .innovation-visual-accent {
   position: absolute;
   right: 28px;
   bottom: 28px;
-  width: min(320px, 56%);
+  width: min(280px, 52%);
   aspect-ratio: 1 / 1;
   border-radius: 32px;
   overflow: hidden;
@@ -1044,6 +1049,15 @@ button {
 .definition-card,
 .comparison-card {
   padding: 28px;
+}
+
+.definition-card {
+  grid-area: definition;
+}
+
+.comparison-card {
+  grid-area: comparison;
+  height: 100%;
 }
 
 .definition-card ul,
@@ -2108,6 +2122,13 @@ button {
 
   .innovation-visual {
     min-height: 520px;
+  }
+
+  .innovation-layout {
+    grid-template-areas:
+      "visual"
+      "definition"
+      "comparison";
   }
 }
 
