@@ -995,8 +995,50 @@ button {
 
 .innovation-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(300px, 0.72fr) minmax(0, 0.88fr) minmax(0, 1.15fr);
   gap: 22px;
+  align-items: stretch;
+}
+
+.innovation-visual {
+  position: relative;
+  min-height: 100%;
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(241, 250, 252, 0.84)),
+    radial-gradient(circle at 100% 0%, rgba(34, 179, 208, 0.12), transparent 26%);
+  border: 1px solid rgba(15, 125, 104, 0.08);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.innovation-visual-main {
+  position: absolute;
+  inset: 0 0 84px 0;
+}
+
+.innovation-visual-main img,
+.innovation-visual-accent img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.innovation-visual-main img {
+  opacity: 0.92;
+}
+
+.innovation-visual-accent {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  width: min(320px, 56%);
+  aspect-ratio: 1 / 1;
+  border-radius: 32px;
+  overflow: hidden;
+  border: 10px solid rgba(250, 247, 241, 0.96);
+  box-shadow: var(--shadow-md);
 }
 
 .definition-card,
@@ -1162,16 +1204,58 @@ button {
 }
 
 .process-visual {
+  position: relative;
   overflow: hidden;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
-  min-height: 100%;
+  min-height: 560px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.06)),
+    rgba(226, 240, 244, 0.72);
 }
 
 .process-visual img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+.process-visual-note {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  display: grid;
+  gap: 10px;
+  padding: 20px 22px;
+  border-radius: 22px;
+  background: rgba(248, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  box-shadow: 0 16px 30px rgba(15, 111, 146, 0.14);
+}
+
+.process-visual-note span {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(34, 179, 208, 0.12);
+  color: var(--forest-deep);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.process-visual-note strong {
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  line-height: 1.45;
 }
 
 .faq-list {
@@ -1218,6 +1302,168 @@ button {
 
 .faq-item p {
   margin: 0 0 22px;
+}
+
+.reviews {
+  display: grid;
+  gap: 28px;
+}
+
+.reviews-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.82fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.reviews-score {
+  display: grid;
+  gap: 14px;
+  padding: 28px;
+  border: 1px solid rgba(15, 125, 104, 0.1);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 252, 252, 0.94)),
+    radial-gradient(circle at 100% 0%, rgba(34, 179, 208, 0.1), transparent 24%);
+  box-shadow: 0 18px 34px rgba(15, 111, 146, 0.1);
+}
+
+.reviews-score-label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(34, 179, 208, 0.12);
+  color: var(--forest-deep);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reviews-score strong {
+  font-family: var(--font-ui);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1;
+  color: var(--text);
+}
+
+.reviews-score p {
+  margin: 0;
+  color: var(--text-soft);
+}
+
+.reviews-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.review-card {
+  display: grid;
+  gap: 18px;
+  padding: 26px;
+  border: 1px solid rgba(15, 125, 104, 0.1);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 252, 252, 0.94)),
+    radial-gradient(circle at 100% 0%, rgba(34, 179, 208, 0.08), transparent 24%);
+  box-shadow: 0 18px 34px rgba(15, 111, 146, 0.08);
+}
+
+.review-card-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+}
+
+.review-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(22, 152, 78, 0.16), rgba(34, 179, 208, 0.2));
+  color: var(--forest-deep);
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.review-card:nth-child(2) .review-avatar {
+  background: linear-gradient(135deg, rgba(34, 179, 208, 0.14), rgba(15, 141, 82, 0.18));
+}
+
+.review-card:nth-child(3) .review-avatar {
+  background: linear-gradient(135deg, rgba(15, 111, 146, 0.14), rgba(34, 179, 208, 0.2));
+}
+
+.review-card:nth-child(4) .review-avatar {
+  background: linear-gradient(135deg, rgba(15, 141, 82, 0.14), rgba(22, 152, 78, 0.22));
+}
+
+.review-meta {
+  display: grid;
+  gap: 4px;
+}
+
+.review-meta strong {
+  font-family: var(--font-ui);
+  font-size: 1.08rem;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.review-meta span {
+  color: var(--text-soft);
+  font-size: 0.88rem;
+}
+
+.review-service {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(216, 246, 229, 0.88);
+  color: var(--forest);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.review-rating-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-soft);
+  font-size: 0.94rem;
+}
+
+.review-rating-line strong {
+  color: var(--text);
+  font-family: var(--font-ui);
+}
+
+.review-card p {
+  margin: 0;
+  color: var(--text);
 }
 
 .contact {
@@ -1781,7 +2027,7 @@ button {
   transform: none;
 }
 
-.js .reveal {
+.js-ready .reveal {
   opacity: 0;
   transform: translateY(22px);
   transition:
@@ -1789,7 +2035,7 @@ button {
     transform 600ms ease;
 }
 
-.js .reveal.is-visible {
+.js-ready .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1799,7 +2045,7 @@ button {
     scroll-behavior: auto;
   }
 
-  .js .reveal {
+  .js-ready .reveal {
     opacity: 1;
     transform: none;
     transition: none;
@@ -1812,6 +2058,7 @@ button {
   .innovation-layout,
   .lagoon,
   .process-layout,
+  .reviews-head,
   .contact,
   .subpage-grid,
   .service-columns {
@@ -1828,7 +2075,8 @@ button {
 
   .services-grid,
   .benefits-grid,
-  .service-link-grid {
+  .service-link-grid,
+  .review-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1856,6 +2104,10 @@ button {
 
   .lagoon-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .innovation-visual {
+    min-height: 520px;
   }
 }
 
@@ -2101,6 +2353,33 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .innovation-visual {
+    min-height: 360px;
+  }
+
+  .innovation-visual-main {
+    inset: 0 0 66px 0;
+  }
+
+  .innovation-visual-accent {
+    right: 18px;
+    bottom: 18px;
+    width: min(240px, 64%);
+    border-width: 8px;
+    border-radius: 24px;
+  }
+
+  .process-visual {
+    min-height: 380px;
+  }
+
+  .process-visual-note {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    padding: 16px 18px;
+  }
+
   .media-card,
   .media-card-large {
     grid-column: auto;
@@ -2173,6 +2452,23 @@ button {
     gap: 6px;
   }
 
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .review-card-head {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .review-service {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .reviews-actions .button {
+    width: 100%;
+  }
+
   .whatsapp-float {
     gap: 10px;
     padding-right: 12px;
@@ -2188,6 +2484,30 @@ button {
 }
 
 @media (max-width: 480px) {
+  .reviews-score,
+  .review-card {
+    padding: 22px;
+    border-radius: 24px;
+  }
+
+  .innovation-visual {
+    min-height: 320px;
+  }
+
+  .process-visual {
+    min-height: 320px;
+  }
+
+  .review-avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 0.88rem;
+  }
+
+  .review-meta strong {
+    font-size: 1rem;
+  }
+
   .whatsapp-float {
     right: 14px;
     bottom: 14px;
