@@ -353,8 +353,25 @@ button {
 }
 
 .hero h1 {
-  max-width: 12ch;
-  font-size: clamp(3rem, 5.8vw, 5.2rem);
+  max-width: 10.6ch;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  line-height: 1.02;
+}
+
+.hero-brand,
+.hero-title-tail {
+  display: block;
+}
+
+.hero-brand {
+  margin-bottom: 0.12em;
+  font-size: 0.76em;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+}
+
+.hero-title-tail {
+  margin-top: 0.14em;
 }
 
 .display-accent {
@@ -367,7 +384,9 @@ button {
 
 .hero .display-accent {
   display: block;
-  margin: 0.03em 0 0.04em;
+  margin: 0;
+  max-width: 9.2ch;
+  line-height: 0.98;
 }
 
 .hero-lead {
@@ -2360,7 +2379,15 @@ button {
 
   .hero h1 {
     max-width: none;
-    font-size: clamp(2.4rem, 12vw, 4rem);
+    font-size: clamp(2.2rem, 10vw, 3.5rem);
+  }
+
+  .hero-brand {
+    font-size: 0.8em;
+  }
+
+  .hero .display-accent {
+    max-width: none;
   }
 
   .services-grid,
