@@ -162,45 +162,94 @@ document.querySelectorAll("form#contact-form").forEach((form) => {
 });
 
 const whatsappFloat = document.querySelector(".whatsapp-float");
-const whatsappStatusText = document.querySelector(".whatsapp-status-text");
+const whatsappStatusNodes = Array.from(document.querySelectorAll(".whatsapp-status-text"));
+const whatsappActionLinks = Array.from(
+  document.querySelectorAll('a.whatsapp-float, a.button-whatsapp')
+);
 
-const getIstanbulParts = () => {
-  const parts = new Intl.DateTimeFormat("en-GB", {
+const getIstanbulClock = () => {
+  const parts = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Europe/Istanbul",
-    weekday: "short",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
   }).formatToParts(new Date());
 
-  return Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  const bag = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  const year = Number(bag.year);
+  const month = Number(bag.month);
+  const day = Number(bag.day);
+  const hour = Number(bag.hour);
+  const minute = Number(bag.minute);
+
+  return {
+    weekday: new Date(Date.UTC(year, month - 1, day)).getUTCDay(), // 0: Pazar
+    minutesOfDay: hour * 60 + minute,
+  };
 };
 
 const isBusinessHours = () => {
   try {
-    const parts = getIstanbulParts();
-    const openDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-    if (!openDays.includes(parts.weekday)) {
-      return false;
-    }
-
-    const minutes = Number(parts.hour) * 60 + Number(parts.minute);
-    return minutes >= 540 && minutes < 1200;
+    const clock = getIstanbulClock();
+    const isOpenDay = clock.weekday >= 1 && clock.weekday <= 6; // Pzt-Cmt
+    const isOpenTime = clock.minutesOfDay >= 540 && clock.minutesOfDay <= 1200; // 09:00-20:00
+    return isOpenDay && isOpenTime;
   } catch (error) {
-    return true;
+    return false;
   }
 };
 
+const setWhatsappLinksInteractive = (online) => {
+  whatsappActionLinks.forEach((link) => {
+    if (!link.dataset.hrefOriginal) {
+      link.dataset.hrefOriginal = link.getAttribute("href") || "";
+    }
+
+    link.classList.toggle("is-disabled", !online);
+    link.setAttribute("aria-disabled", String(!online));
+
+    if (online) {
+      link.setAttribute("href", link.dataset.hrefOriginal);
+      link.removeAttribute("tabindex");
+      return;
+    }
+
+    link.setAttribute("href", "#");
+    link.setAttribute("tabindex", "-1");
+  });
+};
+
+whatsappActionLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    if (link.classList.contains("is-disabled")) {
+      event.preventDefault();
+    }
+  });
+});
+
 const updateWhatsappStatus = () => {
-  if (!whatsappFloat || !whatsappStatusText) {
+  if (!whatsappFloat && !whatsappStatusNodes.length) {
     return;
   }
 
   const online = isBusinessHours();
-  whatsappFloat.classList.toggle("is-online", online);
-  whatsappFloat.classList.toggle("is-offline", !online);
-  whatsappStatusText.textContent = online ? "Çevrimiçi" : "Çevrimdışı";
+  const isEnglish = (document.documentElement.lang || "").toLowerCase().startsWith("en");
+  const labelOnline = isEnglish ? "Online" : "Çevrimiçi";
+  const labelOffline = isEnglish ? "Offline" : "Çevrimdışı";
+
+  if (whatsappFloat) {
+    whatsappFloat.classList.toggle("is-online", online);
+    whatsappFloat.classList.toggle("is-offline", !online);
+  }
+
+  whatsappStatusNodes.forEach((node) => {
+    node.textContent = online ? labelOnline : labelOffline;
+  });
+
+  setWhatsappLinksInteractive(online);
 };
 
 updateWhatsappStatus();

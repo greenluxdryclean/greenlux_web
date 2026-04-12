@@ -282,6 +282,14 @@ button {
   box-shadow: 0 14px 34px rgba(15, 141, 82, 0.22);
 }
 
+.button-whatsapp.is-disabled {
+  background: linear-gradient(135deg, #90a4af 0%, #6f8592 100%);
+  color: #eef4f6;
+  box-shadow: none;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .header-link {
   flex-shrink: 0;
 }
@@ -2037,6 +2045,16 @@ button {
 .whatsapp-float.is-offline .whatsapp-status-dot {
   background: #7d8e99;
   box-shadow: 0 0 0 4px rgba(125, 142, 153, 0.16);
+}
+
+.whatsapp-float.is-disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.whatsapp-float.is-disabled:hover {
+  transform: none;
+  box-shadow: 0 22px 40px rgba(15, 111, 146, 0.2);
 }
 
 .reveal {
