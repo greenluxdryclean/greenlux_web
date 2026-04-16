@@ -88,7 +88,7 @@ const setFormStatus = (node, message, tone) => {
 const buildPayload = (formData) => ({
   fullName: String(formData.get("name") || "").trim(),
   contact: String(formData.get("contact") || "").trim(),
-  subjectType: String(formData.get("subject") || "").trim(),
+  subjectType: String(formData.get("topic") || "").trim(),
   message: String(formData.get("message") || "").trim(),
 });
 
