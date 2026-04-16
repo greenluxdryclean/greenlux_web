@@ -167,27 +167,16 @@ const whatsappActionLinks = Array.from(
   document.querySelectorAll('a.whatsapp-float, a.button-whatsapp')
 );
 
-const getIstanbulClock = () => {
-  const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Europe/Istanbul",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  }).formatToParts(new Date());
+const ISTANBUL_UTC_OFFSET_MINUTES = 180; // TRT (UTC+3)
 
-  const bag = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-  const year = Number(bag.year);
-  const month = Number(bag.month);
-  const day = Number(bag.day);
-  const hour = Number(bag.hour);
-  const minute = Number(bag.minute);
+const getIstanbulClock = () => {
+  const now = new Date();
+  const utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
+  const istanbulShifted = new Date(utcMs + ISTANBUL_UTC_OFFSET_MINUTES * 60000);
 
   return {
-    weekday: new Date(Date.UTC(year, month - 1, day)).getUTCDay(), // 0: Pazar
-    minutesOfDay: hour * 60 + minute,
+    weekday: istanbulShifted.getUTCDay(), // 0: Pazar
+    minutesOfDay: istanbulShifted.getUTCHours() * 60 + istanbulShifted.getUTCMinutes(),
   };
 };
 
@@ -253,4 +242,12 @@ const updateWhatsappStatus = () => {
 };
 
 updateWhatsappStatus();
-window.setInterval(updateWhatsappStatus, 60000);
+window.setInterval(updateWhatsappStatus, 30000);
+
+// Keep status accurate when tab regains focus.
+window.addEventListener("focus", updateWhatsappStatus);
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
+    updateWhatsappStatus();
+  }
+});
