@@ -164,8 +164,14 @@ document.querySelectorAll("form#contact-form").forEach((form) => {
 const whatsappFloat = document.querySelector(".whatsapp-float");
 const whatsappStatusNodes = Array.from(document.querySelectorAll(".whatsapp-status-text"));
 const whatsappActionLinks = Array.from(
-  document.querySelectorAll('a.whatsapp-float, a.button-whatsapp')
-);
+  document.querySelectorAll(
+    "a[data-whatsapp-href], a.whatsapp-float, a.button-whatsapp, a.contact-highlight-link"
+  )
+).filter((link) => {
+  const href = (link.getAttribute("href") || "").trim();
+  const storedHref = (link.dataset.whatsappHref || "").trim();
+  return href.includes("wa.me/") || storedHref.includes("wa.me/");
+});
 const whatsappClosedNotice = {
   tr: "Mesai saatleri dışındayız. WhatsApp hattımız Pazartesi-Cumartesi 09:00-20:00 arasında aktiftir.",
   en: "We are currently outside business hours. Our WhatsApp line is active Monday-Saturday between 09:00 and 20:00.",
@@ -194,17 +200,33 @@ const isBusinessHours = () => {
   }
 };
 
+const getWhatsappTargetUrl = (link) => {
+  const datasetUrl = (link.dataset.whatsappHref || "").trim();
+  if (datasetUrl) {
+    return datasetUrl;
+  }
+
+  const href = (link.getAttribute("href") || "").trim();
+  if (href.includes("wa.me/")) {
+    link.dataset.whatsappHref = href;
+    return href;
+  }
+
+  return "";
+};
+
 const setWhatsappLinksInteractive = (online) => {
   whatsappActionLinks.forEach((link) => {
-    if (!link.dataset.hrefOriginal) {
-      link.dataset.hrefOriginal = link.getAttribute("href") || "";
+    const targetUrl = getWhatsappTargetUrl(link);
+    if (!targetUrl) {
+      return;
     }
 
     link.classList.toggle("is-disabled", !online);
     link.setAttribute("aria-disabled", String(!online));
 
     if (online) {
-      link.setAttribute("href", link.dataset.hrefOriginal);
+      link.setAttribute("href", targetUrl);
       link.removeAttribute("tabindex");
       return;
     }
@@ -215,17 +237,33 @@ const setWhatsappLinksInteractive = (online) => {
 };
 
 whatsappActionLinks.forEach((link) => {
-  link.addEventListener("click", (event) => {
-    if (link.classList.contains("is-disabled")) {
-      event.preventDefault();
-      const isEnglish = (document.documentElement.lang || "").toLowerCase().startsWith("en");
-      window.alert(isEnglish ? whatsappClosedNotice.en : whatsappClosedNotice.tr);
-    }
-  });
+  link.addEventListener(
+    "click",
+    (event) => {
+      const online = isBusinessHours();
+      setWhatsappLinksInteractive(online);
+
+      if (!online) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
+        const isEnglish = (document.documentElement.lang || "").toLowerCase().startsWith("en");
+        window.alert(isEnglish ? whatsappClosedNotice.en : whatsappClosedNotice.tr);
+        return;
+      }
+
+      const targetUrl = getWhatsappTargetUrl(link);
+      if (targetUrl && link.getAttribute("href") !== targetUrl) {
+        link.setAttribute("href", targetUrl);
+      }
+    },
+    true
+  );
 });
 
 const updateWhatsappStatus = () => {
-  if (!whatsappFloat && !whatsappStatusNodes.length) {
+  if (!whatsappFloat && !whatsappStatusNodes.length && !whatsappActionLinks.length) {
     return;
   }
 
