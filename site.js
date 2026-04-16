@@ -222,16 +222,39 @@ const setWhatsappLinksInteractive = (online) => {
       return;
     }
 
+    if (!Object.prototype.hasOwnProperty.call(link.dataset, "targetOriginal")) {
+      link.dataset.targetOriginal = link.getAttribute("target") || "";
+    }
+
+    if (!Object.prototype.hasOwnProperty.call(link.dataset, "relOriginal")) {
+      link.dataset.relOriginal = link.getAttribute("rel") || "";
+    }
+
     link.classList.toggle("is-disabled", !online);
     link.setAttribute("aria-disabled", String(!online));
 
     if (online) {
       link.setAttribute("href", targetUrl);
+
+      if (link.dataset.targetOriginal) {
+        link.setAttribute("target", link.dataset.targetOriginal);
+      } else {
+        link.removeAttribute("target");
+      }
+
+      if (link.dataset.relOriginal) {
+        link.setAttribute("rel", link.dataset.relOriginal);
+      } else {
+        link.removeAttribute("rel");
+      }
+
       link.removeAttribute("tabindex");
       return;
     }
 
     link.setAttribute("href", "#");
+    link.removeAttribute("target");
+    link.removeAttribute("rel");
     link.setAttribute("tabindex", "-1");
   });
 };
