@@ -163,15 +163,9 @@ document.querySelectorAll("form#contact-form").forEach((form) => {
 
 const whatsappFloat = document.querySelector(".whatsapp-float");
 const whatsappStatusNodes = Array.from(document.querySelectorAll(".whatsapp-status-text"));
-const whatsappActionLinks = Array.from(
-  document.querySelectorAll(
-    "a[data-whatsapp-href], a.whatsapp-float, a.button-whatsapp, a.contact-highlight-link"
-  )
-).filter((link) => {
-  const href = (link.getAttribute("href") || "").trim();
-  const storedHref = (link.dataset.whatsappHref || "").trim();
-  return href.includes("wa.me/") || storedHref.includes("wa.me/");
-});
+const whatsappActionLinks = Array.from(document.querySelectorAll("[data-whatsapp-href]")).filter(
+  (link) => (link.dataset.whatsappHref || "").trim().includes("wa.me/")
+);
 const whatsappClosedNotice = {
   tr: "Mesai saatleri dışındayız. WhatsApp hattımız Pazartesi-Cumartesi 09:00-20:00 arasında aktiftir.",
   en: "We are currently outside business hours. Our WhatsApp line is active Monday-Saturday between 09:00 and 20:00.",
@@ -202,17 +196,7 @@ const isBusinessHours = () => {
 
 const getWhatsappTargetUrl = (link) => {
   const datasetUrl = (link.dataset.whatsappHref || "").trim();
-  if (datasetUrl) {
-    return datasetUrl;
-  }
-
-  const href = (link.getAttribute("href") || "").trim();
-  if (href.includes("wa.me/")) {
-    link.dataset.whatsappHref = href;
-    return href;
-  }
-
-  return "";
+  return datasetUrl || "";
 };
 
 const setWhatsappLinksInteractive = (online) => {
@@ -222,40 +206,9 @@ const setWhatsappLinksInteractive = (online) => {
       return;
     }
 
-    if (!Object.prototype.hasOwnProperty.call(link.dataset, "targetOriginal")) {
-      link.dataset.targetOriginal = link.getAttribute("target") || "";
-    }
-
-    if (!Object.prototype.hasOwnProperty.call(link.dataset, "relOriginal")) {
-      link.dataset.relOriginal = link.getAttribute("rel") || "";
-    }
-
     link.classList.toggle("is-disabled", !online);
     link.setAttribute("aria-disabled", String(!online));
-
-    if (online) {
-      link.setAttribute("href", targetUrl);
-
-      if (link.dataset.targetOriginal) {
-        link.setAttribute("target", link.dataset.targetOriginal);
-      } else {
-        link.removeAttribute("target");
-      }
-
-      if (link.dataset.relOriginal) {
-        link.setAttribute("rel", link.dataset.relOriginal);
-      } else {
-        link.removeAttribute("rel");
-      }
-
-      link.removeAttribute("tabindex");
-      return;
-    }
-
-    link.setAttribute("href", "#");
-    link.removeAttribute("target");
-    link.removeAttribute("rel");
-    link.setAttribute("tabindex", "-1");
+    link.setAttribute("tabindex", "0");
   });
 };
 
@@ -263,11 +216,11 @@ whatsappActionLinks.forEach((link) => {
   link.addEventListener(
     "click",
     (event) => {
+      event.preventDefault();
       const online = isBusinessHours();
       setWhatsappLinksInteractive(online);
 
       if (!online) {
-        event.preventDefault();
         event.stopPropagation();
         event.stopImmediatePropagation();
 
@@ -277,8 +230,15 @@ whatsappActionLinks.forEach((link) => {
       }
 
       const targetUrl = getWhatsappTargetUrl(link);
-      if (targetUrl && link.getAttribute("href") !== targetUrl) {
-        link.setAttribute("href", targetUrl);
+      if (targetUrl) {
+        const popup = window.open(targetUrl, "_blank", "noopener,noreferrer");
+
+        if (popup) {
+          popup.opener = null;
+          return;
+        }
+
+        window.location.assign(targetUrl);
       }
     },
     true
