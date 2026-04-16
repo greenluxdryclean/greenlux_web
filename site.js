@@ -170,9 +170,8 @@ const whatsappActionLinks = Array.from(
 const ISTANBUL_UTC_OFFSET_MINUTES = 180; // TRT (UTC+3)
 
 const getIstanbulClock = () => {
-  const now = new Date();
-  const utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
-  const istanbulShifted = new Date(utcMs + ISTANBUL_UTC_OFFSET_MINUTES * 60000);
+  // Date.now() is already UTC-based epoch time. We only need +03:00 shift.
+  const istanbulShifted = new Date(Date.now() + ISTANBUL_UTC_OFFSET_MINUTES * 60000);
 
   return {
     weekday: istanbulShifted.getUTCDay(), // 0: Pazar
