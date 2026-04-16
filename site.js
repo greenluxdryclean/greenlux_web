@@ -166,6 +166,10 @@ const whatsappStatusNodes = Array.from(document.querySelectorAll(".whatsapp-stat
 const whatsappActionLinks = Array.from(
   document.querySelectorAll('a.whatsapp-float, a.button-whatsapp')
 );
+const whatsappClosedNotice = {
+  tr: "Mesai saatleri dışındayız. WhatsApp hattımız Pazartesi-Cumartesi 09:00-20:00 arasında aktiftir.",
+  en: "We are currently outside business hours. Our WhatsApp line is active Monday-Saturday between 09:00 and 20:00.",
+};
 
 const ISTANBUL_UTC_OFFSET_MINUTES = 180; // TRT (UTC+3)
 
@@ -214,6 +218,8 @@ whatsappActionLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
     if (link.classList.contains("is-disabled")) {
       event.preventDefault();
+      const isEnglish = (document.documentElement.lang || "").toLowerCase().startsWith("en");
+      window.alert(isEnglish ? whatsappClosedNotice.en : whatsappClosedNotice.tr);
     }
   });
 });
