@@ -149,7 +149,7 @@ document.querySelectorAll("form#contact-form").forEach((form) => {
         "?text=" + encodeURIComponent(buildWhatsappBody(payload));
 
       setFormStatus(statusNode, "WhatsApp mesaj taslağınız hazırlanıyor.", "is-warning");
-      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      openWhatsappUrl(whatsappUrl);
       return;
     }
 
@@ -199,6 +199,15 @@ const getWhatsappTargetUrl = (link) => {
   return datasetUrl || "";
 };
 
+const openWhatsappUrl = (url) => {
+  if (!url) {
+    return;
+  }
+
+  // A single redirect path prevents duplicate app launches on some mobile browsers.
+  window.location.assign(url);
+};
+
 const setWhatsappLinksInteractive = (online) => {
   whatsappActionLinks.forEach((link) => {
     const targetUrl = getWhatsappTargetUrl(link);
@@ -230,16 +239,7 @@ whatsappActionLinks.forEach((link) => {
       }
 
       const targetUrl = getWhatsappTargetUrl(link);
-      if (targetUrl) {
-        const popup = window.open(targetUrl, "_blank", "noopener,noreferrer");
-
-        if (popup) {
-          popup.opener = null;
-          return;
-        }
-
-        window.location.assign(targetUrl);
-      }
+      openWhatsappUrl(targetUrl);
     },
     true
   );
